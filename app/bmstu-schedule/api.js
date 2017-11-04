@@ -4,8 +4,6 @@
 
 'use strict';
 
-const fetch = require('node-fetch');
-
 const buildUrl = function (host, path, queryParams) {
     const queryPart = Object.keys(queryParams)
         .map(x => `${encodeURIComponent(x)}=${encodeURIComponent(queryParams[x])}`)
