@@ -3,3 +3,11 @@
  */
 
 'use strict';
+
+import {generateICal} from './bmstu-schedule';
+
+(async () => {
+    const calendar = await generateICal('ИУ', '7', '53');
+
+    console.log(calendar);
+})();
