@@ -1,0 +1,26 @@
+{
+  "name": "bmstu-schedule-ical",
+  "version": "0.0.1",
+  "description": "BMSTU schedule .ical generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ed-asriyan/bmstu-schedule-ical.git"
+  },
+  "keywords": [
+    "bmstu",
+    "ical",
+    "schedule",
+    "university"
+  ],
+  "author": "Ed Asriyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ed-asriyan/bmstu-schedule-ical/issues"
+  },
+  "homepage": "https://github.com/ed-asriyan/bmstu-schedule-ical#readme"
+}
