@@ -24,6 +24,26 @@ module.exports = {
                     cacheDirectory: true
                 }
             },
+            {
+                test: /\.(s)?css$/,
+                loaders: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options:
+                            {
+                                minimize: true
+                            }
+                    },
+                    {
+                        loader: "sass-loader",
+                        options:
+                            {
+                                minimize: true
+                            }
+                    }
+                ]
+            },
         ]
     },
     externals: {

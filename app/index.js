@@ -4,6 +4,8 @@
 
 'use strict';
 
+import './styles.scss';
+
 import {generateICal} from './bmstu-schedule';
 
 (async () => {
