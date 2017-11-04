@@ -9,7 +9,7 @@ import {saveAs} from 'file-saver';
 import {generateICal} from './bmstu-schedule';
 
 const button = document.getElementById('btn');
-const groupInput = document.getElementById('group_input');
+const groupInput = document.getElementById('group');
 
 const parseInput = function (input) {
     const regex = /([а-яА-ЯЁё]+)(\d+)-(\d+)/;

@@ -2,15 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BMSTU iCal Schedule generator</title>
+    <title>BMSTU Schedule .ical Generator</title>
 </head>
 <body>
 <script src="/bundle.js" defer></script>
-<div class="ical">
-    <label>
-        <input class="ical__input" id="group_input">
-    </label>
-    <button class="ical__button" id="btn">Generate</button>
+
+<!--
+Form source: https://codepen.io/visualcookie/pen/kkwxPm
+Thanks :)
+!-->
+<div class="container">
+    <h2>BMSTU Schedule .ical Generator</h2>
+    <div class="container__item">
+        <form class="form">
+            <input type="text" class="form__field" placeholder="Your Group (ex. ИУ7-53)" id="group"/>
+            <button type="button" class="btn btn--primary btn--inside uppercase" id="btn">Get</button>
+        </form>
+    </div>
+
+    <div class="container__item container__item--bottom">
+        <p>Source on <a href="//github.com/ed-asriyan/bmstu-schedule-ical" target="_blank">Github</a></p>
+    </div>
 </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109224221-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-109224221-1');
+</script>
 </body>
 </html>
