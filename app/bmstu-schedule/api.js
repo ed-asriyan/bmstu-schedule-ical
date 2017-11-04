@@ -13,7 +13,7 @@ const buildUrl = function (host, path, queryParams) {
 };
 
 const buildUrlForSchedule = function (faculty, department, group) {
-    return buildUrl('http://raspisanie.bmstu.ru:8088', '/api/timetable/get/now/param', {
+    return buildUrl('', '/proxy/api/timetable/get/now/param', {
         'faculty': faculty,
         'department': department,
         'groupNumber': group,

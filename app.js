@@ -5,14 +5,14 @@
 'use strict';
 
 const express = require('express');
-const parser = require('body-parser');
+const request = require('request');
 const app = express();
 
 const routes = ['/'];
 
-routes.forEach(path => {
-    app.use(path, express.static('public/static'));
-});
-app.use(express.static('public/static'));
+app.use('/', express.static('public/static'));
 
+app.get(/^\/proxy\/(.*)/, function (req, res) {
+    request(`http://raspisanie.bmstu.ru:8088${req.originalUrl.slice(6)}`).pipe(res);
+});
 module.exports = app;
