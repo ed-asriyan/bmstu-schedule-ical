@@ -5,9 +5,11 @@ import {createICal} from './generator';
 
 const generateICal = async function (faculty, department, group) {
     const scheduleJson = await fetchSchedule(faculty, department, group);
-    const icalString = createICal(scheduleJson);
+    const cal = createICal(scheduleJson);
 
-    return icalString;
+    cal.name(`BMSTU ${new Date().getFullYear()} ${faculty}${department}-${group}`);
+
+    return cal;
 };
 
 export {generateICal};
