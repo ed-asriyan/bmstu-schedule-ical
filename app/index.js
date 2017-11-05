@@ -16,21 +16,19 @@ const parseInput = function (input) {
     const match = regex.exec(input);
 
     if (!match || match.length !== 4) {
-        throw 0;
+        return;
     }
 
     return {
-        faculty: match[1],
+        faculty: match[1].toUpperCase(),
         department: match[2],
         groupNumber: match[3],
     }
 };
 
 button.addEventListener('click', async function () {
-    let input;
-    try {
-        input = parseInput(groupInput.value);
-    } catch (e) {
+    const input = parseInput(groupInput.value);;
+    if (!input) {
         alert('Invalid group');
         return;
     }
