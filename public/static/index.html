@@ -5,7 +5,7 @@
     <title>BMSTU Schedule .ical Generator</title>
 </head>
 <body>
-<script src="/bundle.js" defer></script>
+<script src="/bundle.js"></script>
 
 <!--
 Form source: https://codepen.io/visualcookie/pen/kkwxPm
@@ -14,10 +14,14 @@ Thanks :)
 <div class="container">
     <h2>BMSTU Schedule .ical Generator</h2>
     <div class="container__item">
-        <form class="form">
-            <input type="text" class="form__field" placeholder="Your Group (ex. ИУ7-53)" id="group"/>
-            <button type="button" class="btn btn--primary btn--inside uppercase" id="btn">Get</button>
-        </form>
+        <div class="form">
+            <input type="text" class="form__field" placeholder="Your Group (ex. ИУ7-53)" id="group"
+                   onkeypress="onInputKeyPress(event)" oninput="onInputInput()"/>
+            <button type="button" class="btn btn--primary btn--inside uppercase" id="btn"
+                    onclick="onButtonClick()" oninput="onInputInput()">
+                Get
+            </button>
+        </div>
     </div>
 
     <div class="container__item container__item--bottom">
