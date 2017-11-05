@@ -28,12 +28,21 @@ const createEvent = function (cal, semesterDayTime, periodTime, studyClass) {
         periodTime.end.getMinutes(),
     );
 
+    let title = studyClass['studyClassTitle'] || '';
+    title = title.replace('(сем) ', '');
+    title = title.replace('(лаб) ', '');
+    title = title.replace('(лек) ', '');
+    if (title === 'зн -----' || title === 'чс -----') return;
+
+    let description = studyClass['studyClassLecturer'] || '';
+    description = description.replace('null', '');
+
     return cal.createEvent({
         start: start,
         end: end,
-        summary: studyClass['studyClassTitle'],
+        summary: title,
         location: studyClass['studyClassRoom'],
-        description: studyClass['studyClassLecturer'],
+        description: description,
         repeating: {
             freq: 'WEEKLY',
             interval: isNormal ? 1 : 2,
