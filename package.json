@@ -4,8 +4,10 @@
   "description": "BMSTU schedule .ical generator",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run generate_bundle && npm run run_node",
+    "run_node": "node ./bin/www",
+    "generate_bundle": "webpack",
+    "delete_bundle": "rm ./public/static/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,19 @@
   "bugs": {
     "url": "https://github.com/ed-asriyan/bmstu-schedule-ical/issues"
   },
-  "homepage": "https://github.com/ed-asriyan/bmstu-schedule-ical#readme"
+  "homepage": "https://github.com/ed-asriyan/bmstu-schedule-ical#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "express": "^4.16.2",
+    "file-saver": "^1.3.3",
+    "ical-generator": "^0.2.10",
+    "node-sass": "^4.6.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^3.8.1"
+  }
 }
