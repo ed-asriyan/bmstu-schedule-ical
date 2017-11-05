@@ -4,8 +4,8 @@
 
 'use strict';
 
-const webpack = require('webpack');
-const path = require('path');
+var webpack = require('webpack');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: './app/index.js',
@@ -49,5 +49,7 @@ module.exports = {
     externals: {
         fs: 'fs',
     },
-    plugins: []
+    plugins: [
+        new UglifyJSPlugin(),
+    ]
 };
