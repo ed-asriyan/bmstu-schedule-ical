@@ -4,6 +4,7 @@
   "description": "BMSTU schedule .ical generator",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"No test specified\"",
     "start": "npm run generate_bundle && npm run run_node",
     "run_node": "node ./bin/www",
     "generate_bundle": "webpack",
