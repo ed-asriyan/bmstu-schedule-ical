@@ -15,7 +15,7 @@ const SAVE_ERROR_MSG = 'Can not generate the iCalendar file. It could occur beca
     'responded data in invalid format.';
 
 const parseInput = function (input) {
-    const regex = /([а-яА-ЯЁё]+)(\d+)-(\d+)/;
+    const regex = /^([а-яА-ЯЁё]+)(\d+)-(\d+)$/;
     const match = regex.exec(input);
 
     if (!match || match.length !== 4) {
