@@ -8,9 +8,6 @@ import './styles.scss';
 import {saveAs} from 'file-saver';
 import {generateICal} from './bmstu-schedule';
 
-const button = document.getElementById('btn');
-const groupInput = document.getElementById('group');
-
 const parseInput = function (input) {
     const regex = /([а-яА-ЯЁё]+)(\d+)-(\d+)/;
     const match = regex.exec(input);
@@ -51,25 +48,24 @@ const animInvalidInput = function () {
     const input = document.getElementById('group');
     const btn = document.getElementById('btn');
 
-    btn.style.transform = 'scale(0)';
-    input.style['box-shadow'] = '0 6px 10px 0 rgba(255, 0, 0, 0.35)';
+    btn.classList.add('btn__hidden');
+    input.classList.add('form__field__invalid');
 };
 
 const animValidInput = function () {
     const input = document.getElementById('group');
     const btn = document.getElementById('btn');
 
-    btn.style.transform = 'scale(1)';
-    input.style['box-shadow'] = '0 6px 10px 0 rgba(0, 0, 0, .1)';
+    btn.classList.remove('btn__hidden');
+    input.classList.remove('form__field__invalid');
 };
 
 const animFetching = function () {
     const input = document.getElementById('group');
     const btn = document.getElementById('btn');
 
-    input.style.transform = 'scale(0)';
-    btn.style.transform = 'scale(1)';
-    btn.style['margin-left'] = '-250px';
+    input.classList.add('form__field__hidden');
+    btn.classList.remove('btn__hidden');
     btn.innerHTML = '...';
 };
 
@@ -77,13 +73,12 @@ const animUserInput = function () {
     const input = document.getElementById('group');
     const btn = document.getElementById('btn');
 
-    input.style.transform = 'scale(1)';
+    input.classList.remove('form__field__hidden');
     if (!input.value || parseInput(input.value)) {
-        btn.style.transform = 'scale(1)';
+        btn.classList.remove('btn__hidden');
     } else {
-        btn.style.transform = 'scale(0)';
+        btn.classList.add('btn__hidden');
     }
-    btn.style['margin-left'] = '-96px';
     btn.innerHTML = 'Get';
 };
 
@@ -118,6 +113,7 @@ window.onInputKeyPress = async function (e) {
         animUserInput();
     }
 };
+
 window.onButtonClick = async function () {
     if (isFetching) return;
 
