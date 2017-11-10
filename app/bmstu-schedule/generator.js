@@ -8,6 +8,8 @@ import ical from 'ical-generator';
 import getPeriodTime from "./getPeriodTime";
 import getSemesterTime from "./getSemesterTime";
 
+const TIMEZONE = 'Europe/Moscow';
+
 const createEvent = function (cal, semesterDayTime, periodTime, studyClass) {
     const isNormal = studyClass['type'] === 'normal';
     const nominator = studyClass['type'] === 'nominator';
@@ -43,6 +45,7 @@ const createEvent = function (cal, semesterDayTime, periodTime, studyClass) {
         summary: title,
         location: studyClass['studyClassRoom'],
         description: description,
+        timezone: TIMEZONE,
         repeating: {
             freq: 'WEEKLY',
             interval: isNormal ? 1 : 2,
@@ -67,8 +70,9 @@ const handleDay = function (cal, semesterTime, day) {
 };
 
 const createICal = function (scheduleJson) {
+
     const cal = ical({
-        timezone: 'Europe/Moscow'
+        timezone: TIMEZONE,
     });
 
     const semesterTime = getSemesterTime();
