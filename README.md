@@ -1,4 +1,4 @@
-# BMSTU Schedule iCalendar Generator [![Build Status](https://travis-ci.org/ed-asriyan/bmstu-schedule-ical.svg?branch=master)](https://travis-ci.org/ed-asriyan/bmstu-schedule-ical)
+# BMSTU Schedule iCalendar Generator [![Build Status](https://travis-ci.org/ed-asriyan/bmstu-schedule-ical.svg?branch=master)](https://travis-ci.org/ed-asriyan/bmstu-schedule-ical) [![dependencies Status](https://david-dm.org/ed-asriyan/bmstu-schedule-ical/status.svg)](https://david-dm.org/ed-asriyan/bmstu-schedule-ical)
 The app generates [iCalendar](https://en.wikipedia.org/wiki/ICalendar) file with the schedule for a certain group in
 BMSTU.
 
