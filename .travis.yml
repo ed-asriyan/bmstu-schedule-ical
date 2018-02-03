@@ -18,3 +18,4 @@ install:
 script:
   - npm run eslint
   - npm run test
+  - docker build -t bmstu-ical . && docker run bmstu-ical &
