@@ -12,8 +12,8 @@ deploy:
   on:
     repo: ed-asriyan/bmstu-schedule-ical
 
+install:
+  npm install
+
 script:
-  - docker build -t bmstu-ical .
-  - docker run -d --name bmstu-ical bmstu-ical
-  - docker start bmstu-ical
-  - docker exec -it bmstu-ical npm test
+  - npm run test
