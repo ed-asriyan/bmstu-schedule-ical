@@ -26,7 +26,7 @@ const parseInput = function (input) {
         faculty: match[1].toUpperCase(),
         department: match[2],
         groupNumber: match[3],
-    }
+    };
 };
 
 const getSchedule = async function (input) {
@@ -43,7 +43,7 @@ const getSchedule = async function (input) {
     }
 
     try {
-        const blob = new Blob([ics], {type: "text/calendar;charset=utf-8"});
+        const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
         saveAs(blob, `BMSTU ${new Date().getFullYear()} ${params.faculty}${params.department}-${params.groupNumber}.ics`);
     } catch (e) {
         throw SAVE_ERROR_MSG;
