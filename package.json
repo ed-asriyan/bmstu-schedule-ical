@@ -26,7 +26,7 @@
     "url": "https://github.com/ed-asriyan/bmstu-schedule-ical/issues"
   },
   "homepage": "https://github.com/ed-asriyan/bmstu-schedule-ical#readme",
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
