@@ -7,6 +7,7 @@
 import './styles.scss';
 import {saveAs} from 'file-saver';
 import {generateICal} from './bmstu-schedule';
+import {trackPageView, trackScheduleRequest, trackScheduleResult} from './analytics';
 
 const INVALID_GROUP_ERROR_MSG = 'Invalid group. Enter text in the following form: ИУ7-53, РК5-22, ИУ3-11, ФН2-12.';
 const FETCH_ERROR_MSG = 'Can\'t fetch this group. It could occurs for several reasons: you\'ve entered a nonexistent ' +
@@ -14,6 +15,8 @@ const FETCH_ERROR_MSG = 'Can\'t fetch this group. It could occurs for several re
     '500 Internal server error).';
 const SAVE_ERROR_MSG = 'Can\'t generate the iCalendar file. Remember which group you were looking for and contact me,' +
     'please: ed-asriyan@protonmail.com.';
+
+trackPageView();
 
 const parseInput = function (input) {
     const regex = /^([а-яА-ЯЁё]+)(\d+)-(\d+)$/;
@@ -33,6 +36,7 @@ const parseInput = function (input) {
 const getSchedule = async function (input) {
     const params = parseInput(input);
     if (!params) {
+        trackScheduleResult('error parse', input);
         throw INVALID_GROUP_ERROR_MSG;
     }
 
@@ -40,6 +44,7 @@ const getSchedule = async function (input) {
     try {
         ics = (await generateICal(params.faculty, params.department, params.groupNumber)).toString();
     } catch (e) {
+        trackScheduleResult('error fetch', input);
         throw FETCH_ERROR_MSG;
     }
 
@@ -47,8 +52,11 @@ const getSchedule = async function (input) {
         const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
         saveAs(blob, `BMSTU ${new Date().getFullYear()} ${params.faculty}${params.department}-${params.groupNumber}.ics`);
     } catch (e) {
+        trackScheduleResult('error save', input);
         throw SAVE_ERROR_MSG;
     }
+
+    trackScheduleResult('ok', input);
 };
 
 const animInvalidInput = function () {
@@ -107,6 +115,8 @@ window.onInputKeyPress = async function (e) {
 
         const input = document.getElementById('group');
 
+        trackScheduleRequest('enter', input.value);
+
         animFetching();
 
         isFetching = true;
@@ -125,6 +135,8 @@ window.onButtonClick = async function () {
     if (isFetching) return;
 
     const input = document.getElementById('group');
+
+    trackScheduleRequest('click', input.value);
 
     animFetching();
 
