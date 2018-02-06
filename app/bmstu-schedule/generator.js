@@ -5,8 +5,8 @@
 'use strict';
 
 import ical from 'ical-generator';
-import getPeriodTime from "./getPeriodTime";
-import getSemesterTime from "./getSemesterTime";
+import getPeriodTime from './getPeriodTime';
+import getSemesterTime from './getSemesterTime';
 
 const createEvent = function (cal, semesterDayTime, periodTime, studyClass) {
     const isNormal = studyClass['type'] === 'normal';
@@ -67,9 +67,8 @@ const handleDay = function (cal, semesterTime, day) {
 };
 
 const createICal = function (scheduleJson) {
-    const cal = ical({
-        timezone: 'Europe/Moscow'
-    });
+
+    const cal = ical();
 
     const semesterTime = getSemesterTime();
 

@@ -4,7 +4,7 @@
 
 'use strict';
 
-const getFirstWeekDay = function (year, month, weekDay) {
+const getFirstWeekDayInTheMonth = function (year, month, weekDay) {
     const day = new Date(year, month);
     while (day.getDay() !== weekDay) {
         day.setDate(day.getDate() + 1);
@@ -22,27 +22,27 @@ const getSemesterTime = function (timePoint = new Date()) {
 
     return {
         'monday': {
-            first: getFirstWeekDay(beginYear, beginMonth, 1),
+            first: getFirstWeekDayInTheMonth(beginYear, beginMonth, 1),
             last: new Date(endYear, endMonth + 1, -2, 59, 59, 59),
         },
         'tuesday': {
-            first: getFirstWeekDay(beginYear, beginMonth, 2),
+            first: getFirstWeekDayInTheMonth(beginYear, beginMonth, 2),
             last: new Date(endYear, endMonth + 1, -2, 59, 59, 59),
         },
         'wednesday': {
-            first: getFirstWeekDay(beginYear, beginMonth, 3),
+            first: getFirstWeekDayInTheMonth(beginYear, beginMonth, 3),
             last: new Date(endYear, endMonth + 1, -2, 59, 59, 59),
         },
         'thursday': {
-            first: getFirstWeekDay(beginYear, beginMonth, 4),
+            first: getFirstWeekDayInTheMonth(beginYear, beginMonth, 4),
             last: new Date(endYear, endMonth + 1, -2, 59, 59, 59),
         },
         'friday': {
-            first: getFirstWeekDay(beginYear, beginMonth, 5),
+            first: getFirstWeekDayInTheMonth(beginYear, beginMonth, 5),
             last: new Date(endYear, endMonth + 1, -2, 59, 59, 59),
         },
         'saturday': {
-            first: getFirstWeekDay(beginYear, beginMonth, 6),
+            first: getFirstWeekDayInTheMonth(beginYear, beginMonth, 6),
             last: new Date(endYear, endMonth + 1, -2, 59, 59, 59),
         },
     };
