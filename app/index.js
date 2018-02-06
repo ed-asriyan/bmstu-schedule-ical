@@ -9,10 +9,11 @@ import {saveAs} from 'file-saver';
 import {generateICal} from './bmstu-schedule';
 
 const INVALID_GROUP_ERROR_MSG = 'Invalid group. Enter text in the following form: ИУ7-53, РК5-22, ИУ3-11, ФН2-12.';
-const FETCH_ERROR_MSG = 'Can not fetch this group. It could occur for several reasons: you enter a nonexistent group,' +
-    ' BMSTU schedule server is unavailable, BMSTU schedule server has responded with invalid status code.';
-const SAVE_ERROR_MSG = 'Can not generate the iCalendar file. It could occur because of BMSTU schedule server has ' +
-    'responded data in invalid format.';
+const FETCH_ERROR_MSG = 'Can\'t fetch this group. It could occurs for several reasons: you\'ve entered a nonexistent ' +
+    'group, BMSTU schedule server is unavailable, BMSTU schedule server has responded with invalid status code (ex.' +
+    '500 Internal server error).';
+const SAVE_ERROR_MSG = 'Can\'t generate the iCalendar file. Remember which group you were looking for and contact me,' +
+    'please: ed-asriyan@protonmail.com.';
 
 const parseInput = function (input) {
     const regex = /^([а-яА-ЯЁё]+)(\d+)-(\d+)$/;
@@ -26,7 +27,7 @@ const parseInput = function (input) {
         faculty: match[1].toUpperCase(),
         department: match[2],
         groupNumber: match[3],
-    }
+    };
 };
 
 const getSchedule = async function (input) {
@@ -43,7 +44,7 @@ const getSchedule = async function (input) {
     }
 
     try {
-        const blob = new Blob([ics], {type: "text/calendar;charset=utf-8"});
+        const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
         saveAs(blob, `BMSTU ${new Date().getFullYear()} ${params.faculty}${params.department}-${params.groupNumber}.ics`);
     } catch (e) {
         throw SAVE_ERROR_MSG;

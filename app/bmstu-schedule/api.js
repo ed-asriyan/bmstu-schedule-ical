@@ -5,11 +5,11 @@
 'use strict';
 
 const buildUrl = function (host, path, queryParams) {
-    const queryPart = Object.keys(queryParams)
-        .map(x => `${encodeURIComponent(x)}=${encodeURIComponent(queryParams[x])}`)
-        .reduce((a, b) => `${a}&${b}`);
+    let queryPart = Object.keys(queryParams)
+        .map(x => `${encodeURIComponent(x)}=${encodeURIComponent(queryParams[x])}`);
+    if (queryPart.length) queryPart = queryPart.reduce((a, b) => `${a}&${b}`);
 
-    return `${host}${path}?${queryPart}`;
+    return `${host}${path}${queryPart.length ? `?${queryPart}` : ''}`;
 };
 
 const buildUrlForSchedule = function (faculty, department, group) {

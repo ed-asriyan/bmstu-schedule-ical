@@ -1,11 +1,21 @@
-language: node_js
-node_js: 8.5
-
 sudo: false
 dist: trusty
 
+services:
+  - docker
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: lpNNu5UTAR/Gax9RF3c9tTdifPdIJOG07fKpWeAvs9XVbm4S1q1Q+GzAPaetMvPYlQKF43ythN+BPf8lGsXb3EEmLnLr22VyRpEj3dFU46gG/XIkObfAfiyniT1IU4FbdDPQM1KCueVnbDAg5UY9B3mPu2lm5YMtlm/N+gBjsfKpTmOyzqNmp7huQ/KMvELL8mWknVmV1r+ceur52rb73cZTkxbFZASjtD+KX52ECU94mLqjSPVVf3g2X2FdDJGSWrYuqOjHKo1yXGoBnFWeoZ1cix2qDaxqZjmpDCOYjeS6qq0aTLPtoqA/+zkKnEofTu1VnCvFvv1XyHeepOeimY7QVsnQmNKxF+B4aGR3tcQzNlT2GyAxUicOuFjhKYzQ+x8CwzYkbdNvc4Ft8DgQJT7YkRqmp8Jiqv+v1B8VwqRx+eNYoAWsnW1i1sb3Tk8kIfFWeuCyDXMIEmHYIOX1UjqUxNvHH366utvZOTTgJqcenHZm8tO6Ux1GMELyeSl4Wp0huPSEt3W7CvYn/+mUJ4/11lRnQ3VbuxnxGmMIigUyvC6KODW34o5oMZca4lusTwghYQQggXqaS0vEf78c1u9dTz2v0TqfnLpkoiQ4r9cjN7m41iJRro28ZXym4gii0F6Yhr2PTBsYBA0M62Z5eGUKlRN7f+v4WxTGwAjFApg=
+  app: bmstu-ical
+  on:
+    repo: ed-asriyan/bmstu-schedule-ical
+
 install:
-  - npm install
+  npm install
 
 script:
-  - npm test
+  - npm run eslint
+  - npm run test
+  - docker build -t bmstu-ical . && docker run bmstu-ical &
