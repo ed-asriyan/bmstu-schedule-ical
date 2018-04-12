@@ -4,14 +4,17 @@
 
 'use strict';
 
+const path = require('path');
+
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './app/index.js',
+    entry: path.resolve(__dirname, 'app', 'index'),
     output: {
-        path: __dirname,
-        filename: './public/static/bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
     },
 
     module: {
@@ -47,5 +50,11 @@ module.exports = {
     },
     plugins: [
         new UglifyJSPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.resolve(__dirname, 'app/index.html'),
+            inject: true,
+            chunksSortMode: 'dependency',
+        }),
     ]
 };

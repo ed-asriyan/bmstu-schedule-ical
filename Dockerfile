@@ -12,5 +12,5 @@ RUN npm install
 RUN npm run generate_bundle
 
 # Copy nginx config
-RUN cp -R public/static/. /usr/html/
+RUN cp -R dist. /usr/html/
 RUN cp nginx.conf /etc/nginx/nginx.conf
