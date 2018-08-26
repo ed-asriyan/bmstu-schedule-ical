@@ -8,6 +8,7 @@ var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+    mode: "production",
     entry: './app/index.js',
     output: {
         path: __dirname,
@@ -15,7 +16,7 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -47,5 +48,8 @@ module.exports = {
     },
     plugins: [
         new UglifyJSPlugin(),
-    ]
+    ],
+    performance : {
+        hints : false
+    },
 };
